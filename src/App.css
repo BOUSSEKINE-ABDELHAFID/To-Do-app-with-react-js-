@@ -1,0 +1,129 @@
+body {
+  background-color: black;
+}
+.App {
+  text-align: center;
+  display: flex;
+  background-color: black;
+  color: rgba(255, 255, 255, 0.897);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+ul {
+  list-style: none;
+  padding-top: 20vh;
+}
+
+
+
+li {
+  background-color: #222;
+  width: 40vw;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  transition: linear 1s;
+  position: relative;
+  display: flex;
+}
+
+li:hover {
+  background-color: rgba(231, 231, 1, 0.4);
+}
+
+li span {
+  text-align: left;
+  font-size: 20px;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  width: 100px;
+}
+.btn {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  position: absolute;
+  outline: none;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.edit-btn {
+  left: 75%;
+  transition: 1s;
+}
+
+.edit-btn:hover {
+  color: yellow;
+}
+.delete-btn {
+  left: 85%;
+  transition: 1s;
+}
+
+.delete-btn:hover {
+  color: yellow;
+}
+
+@media screen and (max-width: 760px) {
+  li {
+    width: 90%;
+    margin-left: -10%;
+  }
+  li span {
+    font-size: 15px;
+    padding-left: 0rem;
+  }
+  .edit-btn {
+    padding-right: 20px;
+  }
+}
+
+.input {
+  margin-top: 40vh;
+  width: 40vh;
+  padding: 0.8rem 1rem;
+  outline: none;
+  border-radius: 15px;
+  background-color: #222;
+  -webkit-text-fill-color: aliceblue;
+  border: none;
+  font-size: 18px;
+  animation: animateForm;
+  animation-delay: 0s;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.submit-btn {
+  width: 120px;
+  border-radius: 15px !important;
+}
+
+.submit-btn:hover {
+  background-color: yellow !important;
+  color: #222;
+}
+
+.smallContainer {
+  display: grid;
+  position: fixed;
+}
+
+.add-btn {
+  top: 15vh;
+  padding-bottom: 5vh;
+}
+
+@keyframes animateForm{
+  0%{
+    margin-top: 40vh;
+  }
+  100%{
+    margin-top: 30vh;
+  }
+}
+
+
