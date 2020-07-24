@@ -6,7 +6,7 @@ import InputItems from "./components/InputItems";
 import ListItems from "./components/ListItems";
 import uuid from "uuid";
 
-const theme = createMuiTheme({
+const theme = createMuiTheme({//customasing a material ui theme
   palette: {
     primary: {
       main: "#ffff00",
@@ -20,26 +20,26 @@ const theme = createMuiTheme({
 
 const todo = localStorage.getItem("todo")
   ? JSON.parse(localStorage.getItem("todo"))
-  : [];
+  : [];//using the local storage in order to not loosing the items when closing or reloading the page
 
 function App() {
-  const [items, setItems] = useState(todo);
-  const [task, setTask] = useState("");
-  const [edit, setEdit] = useState(false);
-  const [id, setId] = useState(0);
-  const [step, setStep] = useState(0);
+  const [items, setItems] = useState(todo);//for the items
+  const [task, setTask] = useState("");//for the task
+  const [edit, setEdit] = useState(false);//for the edit operation
+  const [id, setId] = useState(0);//for the id
+  const [step, setStep] = useState(0);//for the step that allows us to transition between the list and the item input
 
   useEffect(() => {
-    localStorage.setItem("todo", JSON.stringify(items));
+    localStorage.setItem("todo", JSON.stringify(items));//loading the items from the local storage
   }, [items]);
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {//affecting the value to the task
     setTask(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => {//handling the submit operation in both adding a new item or editing an existing one
     e.preventDefault();
-    if (task !== "") {
-      if (edit) {
+    if (task !== "") {//if the task is not an empty string
+      if (edit) {//if we are  in the case of editing an existing task
         items.map((item) => {
           if (item.id === id) {
             item.content = task;
@@ -47,7 +47,7 @@ function App() {
         });
         setEdit(false);
       } else {
-        const newTask = { content: task, id: uuid() };
+        const newTask = { content: task, id: uuid() };//adding a new task with a uuid id 
         const newList = [...items, newTask];
         setItems(newList);
       }
@@ -56,12 +56,12 @@ function App() {
     setStep((prev) => prev - 1);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id) => {//handling the operation of deleting an item by taking his id and then filtering the list of items
     const filteredItems = items.filter((item) => item.id !== id);
     setItems(filteredItems);
   };
 
-  const handleEdit = (id) => {
+  const handleEdit = (id) => {//handling the edit operation by finding the item and the replace it with the new item
     setEdit(true);
     const elementEdit = items.find((item) => item.id === id);
     setTask(elementEdit.content);
@@ -69,13 +69,13 @@ function App() {
     setStep((prev) => prev + 1);
   };
 
-  const handleAdd = () => {
+  const handleAdd = () => {//transition between the two pages
     setStep((prev) => prev + 1);
   };
 
-  const stepManagments = () => {
+  const stepManagments = () => {//this allows us to change the display between the list of items and the form where adding a new item by contronlling the step
     switch (step) {
-      case 0:
+      case 0://return the list of items
         return (
           <ListItems
             todo={items}
@@ -85,7 +85,7 @@ function App() {
           />
         );
       case 1:
-        return (
+        return (//return the input items
           <InputItems
             handleChange={handleChange}
             task={task}
@@ -101,7 +101,9 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>{stepManagments()}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+              {stepManagments()}
+      </ThemeProvider>
     </div>
   );
 }

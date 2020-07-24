@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from '@material-ui/core'
 
-
+//the input component for a new item or editing an existing one
 function InputItems({handleChange, task, handleSubmit, edit}) {
     return (
         <form onSubmit = {handleSubmit} className = "form">

@@ -1,6 +1,6 @@
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-
+//an item
 function Item({ item, handleDelete, handleEdit }) {
   return (
     <div>

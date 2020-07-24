@@ -4,7 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import ReactDOM from "react-dom";
 import { useSpring, animated } from "react-spring";
-
+// component of displaying the list of items
 function ListItems({ todo, handleDelete, handleEdit, handleAdd }) {
   const [state, toggle] = useState(true);
   const { x } = useSpring({
